@@ -3,14 +3,22 @@ import './App.scss';
 
 import { Canvas, useFrame } from "react-three-fiber";
 
-const SpinningCube = ({ position, args, color }) => {
+import { softShadows, MeshWobbleMaterial, OrbitControls } from "drei";
+
+softShadows();
+
+const SpinningCube = ({ position, args, color, speed }) => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01)
   )
   return (
     <mesh castShadow position={position} ref={mesh}>
       <boxBufferGeometry attach='geometry' args={args} />
-      <meshStandardMaterial attach='material' color={color} />
+      <MeshWobbleMaterial
+        attach='material'
+        color={color}
+        speed={speed}
+        factor={0.6} />
     </mesh>
   );
 };
@@ -47,9 +55,10 @@ function App() {
             <shadowMaterial attach='material' opacity={0.3} />
           </mesh>
         </group>
-        <SpinningCube position={[0, 1, 0]} args={[3, 2, 1]} color="green" />
-        <SpinningCube position={[-2, 1, -5]} color="pink" />
-        <SpinningCube position={[5, 1, -2]} color="pink" />
+        <SpinningCube position={[0, 1, 0]} args={[3, 2, 1]} color="green" speed={11} />
+        <SpinningCube position={[-2, 1, -5]} color="pink" speed={20} />
+        <SpinningCube position={[5, 1, -2]} color="pink" speed={20} />
+        <OrbitControls />
       </Canvas>
     </>
   );

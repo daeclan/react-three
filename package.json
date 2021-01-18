@@ -1,7 +1,10 @@
 {
   "dependencies": {
+    "create-react-app": "^4.0.1",
     "drei": "^2.2.17",
+    "react-scripts": "^4.0.1",
     "react-spring": "^8.0.27",
+    "react-three": "^0.9.7",
     "react-three-fiber": "^5.3.14",
     "sass": "^1.32.4",
     "three": "^0.124.0"

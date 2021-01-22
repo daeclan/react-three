@@ -16,7 +16,7 @@ const SpinningCube = ({ position, args, color, speed }) => {
   const [expand, setExpand] = useState(false);
 
   const props = useSpring({
-    scale: expand ? [1, 4, 1, 4, 1.4] : [1, 1, 1]
+    scale: expand ? [1, 4, 1, 4, 1, 4] : [2, 2, 2]
   });
   return (
     <a.mesh
@@ -67,9 +67,9 @@ function App() {
             <shadowMaterial attach='material' opacity={0.3} />
           </mesh>
         </group>
-        <SpinningCube position={[0, 1, 0]} args={[3, 2, 1]} color="green" speed={11} />
-        <SpinningCube position={[-2, 1, -5]} color="pink" speed={20} />
-        <SpinningCube position={[5, 1, -2]} color="pink" speed={20} />
+        <SpinningCube position={[0, 1, 0]} args={[3, 2, 1]} color="white" speed={11} />
+        <SpinningCube position={[-2, 1, -5]} color="red" speed={20} />
+        <SpinningCube position={[5, 1, -2]} color="blue" speed={20} />
         <OrbitControls />
       </Canvas>
     </>
